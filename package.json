@@ -1,6 +1,6 @@
 {
   "name": "c64-react-support",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -41,5 +41,8 @@
     "dist",
     "LICENSE",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "zustand": "^4.3.8"
+  }
 }
