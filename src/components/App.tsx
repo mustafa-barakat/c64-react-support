@@ -2,7 +2,7 @@ import React from 'react'
 // type Props = {
 //   value?: number
 // }
-const C64Chat = () => {
+const C64Chat = (): React.JSX.Element => {
   // const [counter, setCounter] = useState(value)
 
   // const onMinus = () => {

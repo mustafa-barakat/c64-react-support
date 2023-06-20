@@ -6,8 +6,8 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs --ts",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs,types ",
+    "build": "microbundle-crl --no-compress --format modern,cjs,esm --ts",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs,esm --ts",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run prettier && npm run lint",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
