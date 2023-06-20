@@ -6,7 +6,7 @@ const C64Chat = (): React.JSX.Element => {
   const [showChat, setShowChat] = React.useState(false)
 
   return (
-    <>
+    <div>
       {!showChat && (
         <div className='chat-animation fixed bottom-4 right-4'>
           <button
@@ -503,7 +503,7 @@ const C64Chat = (): React.JSX.Element => {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
 export default C64Chat
