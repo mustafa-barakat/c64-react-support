@@ -1,2 +1,3 @@
+import C64Chat from './components/App'
 import './styles/main.css'
-export { default as C64Chat } from './components/App'
+export { C64Chat }
