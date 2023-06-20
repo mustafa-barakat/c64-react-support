@@ -6,7 +6,7 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "scripts": {
-    "build": "npx tailwindcss -i ./src/main.css -o ./dist/main.css && yarn build:esm && yarn build:cjs",
+    "build": "npx tailwindcss -i ./src/main.css -o ./dist/main.css && yarn build:esm && yarn build:cjs &&npx tailwindcss -i ./src/main.css -o ./dist/components/main.css ",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
     "prepare": "npm run build",
