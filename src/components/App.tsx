@@ -31,12 +31,12 @@ const C64Chat = () => {
             xmlns='http://www.w3.org/2000/svg'
             fill='#000000'
           >
-            <g id='SVGRepo_bgCarrier' stroke-width='0'></g>
-            <g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g>
+            <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
+            <g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g>
             <g id='SVGRepo_iconCarrier'>
               {' '}
               <title>gen-lifebelt</title> <desc>Created with Sketch.</desc> <defs> </defs>{' '}
-              <g id='General' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
+              <g id='General' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
                 {' '}
                 <g id='SLICES-64px'> </g>{' '}
                 <g id='ICONS' transform='translate(5.000000, 5.000000)'>
@@ -82,9 +82,9 @@ const C64Chat = () => {
                       d='M2.9971,13.8689 C2.3621,12.7229 2.0001,11.4029 2.0001,9.9999 C2.0001,5.5819 5.5821,1.9999 10.0001,1.9999 C11.4031,1.9999 12.7231,2.3619 13.8691,2.9969'
                       id='Stroke-469'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -92,9 +92,9 @@ const C64Chat = () => {
                       d='M49.003,13.8689 C49.638,12.7229 50,11.4029 50,9.9999 C50,5.5819 46.418,1.9999 42,1.9999 C40.597,1.9999 39.277,2.3619 38.131,2.9969'
                       id='Stroke-470'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -102,9 +102,9 @@ const C64Chat = () => {
                       d='M2.9971,38.1311 C2.3621,39.2771 2.0001,40.5961 2.0001,42.0001 C2.0001,46.4171 5.5821,50.0001 10.0001,50.0001 C11.4031,50.0001 12.7231,49.6381 13.8691,49.0031'
                       id='Stroke-471'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -112,9 +112,9 @@ const C64Chat = () => {
                       d='M49.003,38.1311 C49.638,39.2771 50,40.5961 50,42.0001 C50,46.4171 46.418,50.0001 42,50.0001 C40.597,50.0001 39.277,49.6381 38.131,49.0031'
                       id='Stroke-472'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -122,9 +122,9 @@ const C64Chat = () => {
                       d='M52.0001,26 C52.0001,11.64 40.3591,0 26.0001,0 C11.6411,0 0.0001,11.64 0.0001,26 C0.0001,40.359 11.6411,52 26.0001,52 C40.3591,52 52.0001,40.359 52.0001,26 Z'
                       id='Stroke-473'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -132,9 +132,9 @@ const C64Chat = () => {
                       d='M40.0001,26 C40.0001,33.732 33.7321,40 26.0001,40 C18.2681,40 12.0001,33.732 12.0001,26 C12.0001,18.267 18.2681,12 26.0001,12 C33.7321,12 40.0001,18.267 40.0001,26 Z'
                       id='Stroke-474'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -142,9 +142,9 @@ const C64Chat = () => {
                       d='M13.8692,2.9968 L19.6392,13.5248'
                       id='Stroke-475'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -152,9 +152,9 @@ const C64Chat = () => {
                       d='M13.6387,19.4216 L2.9967,13.8686'
                       id='Stroke-476'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -162,9 +162,9 @@ const C64Chat = () => {
                       d='M38.1309,2.9968 L32.3609,13.5248'
                       id='Stroke-477'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -172,9 +172,9 @@ const C64Chat = () => {
                       d='M38.3614,19.4216 L49.0034,13.8686'
                       id='Stroke-478'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -182,9 +182,9 @@ const C64Chat = () => {
                       d='M13.8692,49.0027 L19.6392,38.4747'
                       id='Stroke-479'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -192,9 +192,9 @@ const C64Chat = () => {
                       d='M13.6387,32.5779 L2.9967,38.1309'
                       id='Stroke-480'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -202,9 +202,9 @@ const C64Chat = () => {
                       d='M38.1309,49.0027 L32.3609,38.4747'
                       id='Stroke-481'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -212,9 +212,9 @@ const C64Chat = () => {
                       d='M38.3614,32.5779 L49.0034,38.1309'
                       id='Stroke-482'
                       stroke='#414547'
-                      stroke-width='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
                     >
                       {' '}
                     </path>{' '}
@@ -238,12 +238,12 @@ const C64Chat = () => {
                 xmlns='http://www.w3.org/2000/svg'
                 fill='#000000'
               >
-                <g id='SVGRepo_bgCarrier' stroke-width='0'></g>
-                <g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g>
+                <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
+                <g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g>
                 <g id='SVGRepo_iconCarrier'>
                   {' '}
                   <title>gen-lifebelt</title> <desc>Created with Sketch.</desc> <defs> </defs>{' '}
-                  <g id='General' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'>
+                  <g id='General' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
                     {' '}
                     <g id='SLICES-64px'> </g>{' '}
                     <g id='ICONS' transform='translate(5.000000, 5.000000)'>
@@ -289,9 +289,9 @@ const C64Chat = () => {
                           d='M2.9971,13.8689 C2.3621,12.7229 2.0001,11.4029 2.0001,9.9999 C2.0001,5.5819 5.5821,1.9999 10.0001,1.9999 C11.4031,1.9999 12.7231,2.3619 13.8691,2.9969'
                           id='Stroke-469'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -299,9 +299,9 @@ const C64Chat = () => {
                           d='M49.003,13.8689 C49.638,12.7229 50,11.4029 50,9.9999 C50,5.5819 46.418,1.9999 42,1.9999 C40.597,1.9999 39.277,2.3619 38.131,2.9969'
                           id='Stroke-470'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -309,9 +309,9 @@ const C64Chat = () => {
                           d='M2.9971,38.1311 C2.3621,39.2771 2.0001,40.5961 2.0001,42.0001 C2.0001,46.4171 5.5821,50.0001 10.0001,50.0001 C11.4031,50.0001 12.7231,49.6381 13.8691,49.0031'
                           id='Stroke-471'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -319,9 +319,9 @@ const C64Chat = () => {
                           d='M49.003,38.1311 C49.638,39.2771 50,40.5961 50,42.0001 C50,46.4171 46.418,50.0001 42,50.0001 C40.597,50.0001 39.277,49.6381 38.131,49.0031'
                           id='Stroke-472'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -329,9 +329,9 @@ const C64Chat = () => {
                           d='M52.0001,26 C52.0001,11.64 40.3591,0 26.0001,0 C11.6411,0 0.0001,11.64 0.0001,26 C0.0001,40.359 11.6411,52 26.0001,52 C40.3591,52 52.0001,40.359 52.0001,26 Z'
                           id='Stroke-473'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -339,9 +339,9 @@ const C64Chat = () => {
                           d='M40.0001,26 C40.0001,33.732 33.7321,40 26.0001,40 C18.2681,40 12.0001,33.732 12.0001,26 C12.0001,18.267 18.2681,12 26.0001,12 C33.7321,12 40.0001,18.267 40.0001,26 Z'
                           id='Stroke-474'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -349,9 +349,9 @@ const C64Chat = () => {
                           d='M13.8692,2.9968 L19.6392,13.5248'
                           id='Stroke-475'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -359,9 +359,9 @@ const C64Chat = () => {
                           d='M13.6387,19.4216 L2.9967,13.8686'
                           id='Stroke-476'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -369,9 +369,9 @@ const C64Chat = () => {
                           d='M38.1309,2.9968 L32.3609,13.5248'
                           id='Stroke-477'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -379,9 +379,9 @@ const C64Chat = () => {
                           d='M38.3614,19.4216 L49.0034,13.8686'
                           id='Stroke-478'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -389,9 +389,9 @@ const C64Chat = () => {
                           d='M13.8692,49.0027 L19.6392,38.4747'
                           id='Stroke-479'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -399,9 +399,9 @@ const C64Chat = () => {
                           d='M13.6387,32.5779 L2.9967,38.1309'
                           id='Stroke-480'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -409,9 +409,9 @@ const C64Chat = () => {
                           d='M38.1309,49.0027 L32.3609,38.4747'
                           id='Stroke-481'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -419,9 +419,9 @@ const C64Chat = () => {
                           d='M38.3614,32.5779 L49.0034,38.1309'
                           id='Stroke-482'
                           stroke='#414547'
-                          stroke-width='2'
-                          stroke-linecap='round'
-                          stroke-linejoin='round'
+                          strokeWidth='2'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
                         >
                           {' '}
                         </path>{' '}
@@ -438,9 +438,9 @@ const C64Chat = () => {
             <button className='text-gray-400 hover:text-gray-500'>
               <svg className='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
                 <path
-                  fill-rule='evenodd'
+                  fillRule='evenodd'
                   d='M5.293 5.293a1 1 0 0 1 1.414 0L10 8.586l3.293-3.293a1 1 0 1 1 1.414 1.414L11.414 10l3.293 3.293a1 1 0 0 1-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 0 1-1.414-1.414L8.586 10 5.293 6.707a1 1 0 0 1 0-1.414z'
-                  clip-rule='evenodd'
+                  clipRule='evenodd'
                 />
               </svg>
             </button>
