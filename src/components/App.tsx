@@ -1,17 +1,53 @@
-import React from 'react'
-// type Props = {
-//   value?: number
-// }
-const C64Chat = (): React.JSX.Element => {
+import React, { useEffect } from 'react'
+import useChatStore from '../store/chat.store'
+type Props = {
+  helpColor?: string
+  mainColor?: string
+  hoverColor?: string
+}
+const C64Chat = ({ helpColor, mainColor }: Props): React.JSX.Element => {
+  const [currentMessage, setCurrentMessage] = React.useState('')
   const [showChat, setShowChat] = React.useState(false)
+  const [messagesEndRef, setMessagesEndRef] = React.useState<HTMLDivElement | null>(null)
+  const { chats, sendMessage, getChatHistory }: any = useChatStore()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const scrollToBottom = () => {
+    messagesEndRef?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  useEffect(() => {
+    getChatHistory()
+  }, [getChatHistory])
+  useEffect(() => {
+    scrollToBottom()
+  }, [chats, scrollToBottom])
+
+  const getTime = (date: string) => {
+    // alert(new Date(date).getTime() - new Date().getTime())
+    if (new Date().getTime() - new Date(date).getTime() > 10 * 60 * 100) {
+      //count in minutes
+      return new Date(date)
+        .toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          hour12: false,
+          minute: 'numeric',
+        })
+        .split(' ')[0]
+    } else return Math.floor((new Date().getTime() - new Date(date).getTime()) / 60000) + 'minutes ago'
+  }
   return (
     <div>
       {!showChat && (
         <div className='chat-animation fixed bottom-4 right-4'>
           <button
             onClick={() => setShowChat(!showChat)}
-            className='max-w-sm rounded-full bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'
+            className={`max-w-sm rounded-full 
+            
+            px-4 py-2 font-bold text-white`}
+            style={{
+              backgroundColor: mainColor,
+            }}
           >
             <svg
               width='50px'
@@ -36,7 +72,7 @@ const C64Chat = (): React.JSX.Element => {
                       <path
                         d='M26.0001,40 C18.2681,40 12.0001,33.732 12.0001,26 C12.0001,18.267 18.2681,12 26.0001,12 C33.7321,12 40.0001,18.267 40.0001,26 C40.0001,33.732 33.7321,40 26.0001,40 M26.0001,0 C11.6411,0 0.0001,11.64 0.0001,26 C0.0001,40.359 11.6411,52 26.0001,52 C40.3591,52 52.0001,40.359 52.0001,26 C52.0001,11.64 40.3591,0 26.0001,0'
                         id='Fill-464'
-                        fill='#F16963'
+                        fill={helpColor}
                       >
                         {' '}
                       </path>{' '}
@@ -218,7 +254,7 @@ const C64Chat = (): React.JSX.Element => {
       )}
       {showChat && (
         <div className='max-h-120 chat-animation fixed bottom-2 right-2 z-50 max-w-xs'>
-          <div className='rounded-lg bg-white shadow-lg'>
+          <div className='rounded-lg  shadow-lg'>
             {/* <!-- Header --> */}
             <div className='flex items-center justify-between border-b border-gray-200 px-4 py-2'>
               <div>
@@ -245,7 +281,7 @@ const C64Chat = (): React.JSX.Element => {
                           <path
                             d='M26.0001,40 C18.2681,40 12.0001,33.732 12.0001,26 C12.0001,18.267 18.2681,12 26.0001,12 C33.7321,12 40.0001,18.267 40.0001,26 C40.0001,33.732 33.7321,40 26.0001,40 M26.0001,0 C11.6411,0 0.0001,11.64 0.0001,26 C0.0001,40.359 11.6411,52 26.0001,52 C40.3591,52 52.0001,40.359 52.0001,26 C52.0001,11.64 40.3591,0 26.0001,0'
                             id='Fill-464'
-                            fill='#F16963'
+                            fill={helpColor}
                           >
                             {' '}
                           </path>{' '}
@@ -438,53 +474,57 @@ const C64Chat = (): React.JSX.Element => {
               </button>
             </div>
             {/* <!-- Messages --> */}
-            <div className='max-h-72 overflow-auto px-4 py-2 '>
+            <div className='max-h-72 overflow-auto px-4 py-2'>
               <div className='mb-2 text-center text-sm text-gray-500'>June 19th, 2023</div>
 
-              <div className='s flex flex-col space-y-2'>
-                <div className='flex items-start'>
-                  <div className='rounded-lg bg-gray-100 p-2'>
-                    <p className='text-sm text-gray-600'>Hello!</p>
-                    <p className='text-xs font-extralight text-gray-400'>10:00 AM</p>
-                  </div>
-                </div>
-                <div className='flex items-end justify-end'>
-                  <div className='rounded-lg bg-blue-500 p-2 text-white'>
-                    <p className='text-sm'>Hi there!</p>
-                  </div>
-                </div>
-                <div className='flex items-end justify-end'>
-                  <div className='rounded-lg bg-blue-500 p-2 text-white'>
-                    <p className='text-sm'>Hi there!</p>
-                  </div>
-                </div>
-                <div className='flex items-end justify-end'>
-                  <div className='rounded-lg bg-blue-500 p-2 text-white'>
-                    <p
-                      className='over h-auto w-60 whitespace-normal
-              break-all text-sm'
-                    >
-                      Hi thfadsfadfffffffffffffff
-                      fadffadfffffffffffffffffdsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasffffgggggggggggggggffffffffffffffffffdsfasdsdsdsdsdsdsdsdsdsdsdsdfffffffffere!
-                    </p>
-                    <p className='text-xs  font-extralight text-white'>10:01 AM</p>
-                  </div>
-                </div>
-                <div className='flex items-end justify-end'>
-                  <div className='rounded-lg bg-blue-500 p-2 text-white'>
-                    <p
-                      className='over h-auto w-60 whitespace-normal
-              break-all text-sm'
-                    >
-                      Hi thfadsfadfffffffffffffff
-                      fadffadfffffffffffffffffdsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasfsafafafaffasffffgggggggggggggggffffffffffffffffffdsfasdsdsdsdsdsdsdsdsdsdsdsdfffffffffere!
-                    </p>
-
-                    <div className='flex items-end justify-end'>
-                      <p className='text-xs  font-extralight text-white'>10:01 AM</p>
-                    </div>
-                  </div>
-                </div>
+              <div className=' flex flex-col space-y-2'>
+                {chats &&
+                  chats.map(
+                    (
+                      chat: {
+                        createdAt: string
+                        message:
+                          | string
+                          | number
+                          | boolean
+                          | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+                          | Iterable<React.ReactNode>
+                          | React.ReactPortal
+                          | null
+                          | undefined
+                        dir: string
+                      },
+                      index: React.Key | null | undefined,
+                    ) => (
+                      <div
+                        key={index}
+                        className={` flex ${chat.dir === 'incoming' ? 'items-start' : 'items-end justify-end'}`}
+                      >
+                        <div className={`rounded-lg ${chat.dir === 'incoming' ? 'bg-yellow-500' : 'bg-blue-500'} p-2`}>
+                          <p className={`text-sm ${chat.dir === 'incoming' ? 'text-black' : 'text-white'} `}>
+                            {chat.message}
+                          </p>
+                          <p
+                            className={`text-xs font-extralight ${
+                              chat.dir === 'incoming' ? 'text-white' : 'text-white'
+                            } `}
+                          >
+                            {
+                              //if less than 10 minutes
+                              getTime(chat.createdAt)
+                            }
+                          </p>
+                        </div>
+                      </div>
+                    ),
+                  )}
+                <div className='bg-red-500'></div>
+                <div
+                  style={{ float: 'left', clear: 'both' }}
+                  ref={(el) => {
+                    setMessagesEndRef(el)
+                  }}
+                ></div>
               </div>
             </div>
             {/* <!-- Input --> */}
@@ -492,10 +532,20 @@ const C64Chat = (): React.JSX.Element => {
               <div className='flex items-center'>
                 <input
                   type='text'
+                  value={currentMessage}
+                  onChange={(e) => setCurrentMessage(e.target.value)}
                   className='w-full rounded-full border border-gray-300 px-4 py-2'
                   placeholder='Type your message...'
                 />
-                <button className='ml-2 rounded-full bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600'>
+                <button
+                  onClick={() => {
+                    if (currentMessage) {
+                      sendMessage(currentMessage)
+                      setCurrentMessage('')
+                    }
+                  }}
+                  className='ml-2 rounded-full bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600'
+                >
                   Send
                 </button>
               </div>

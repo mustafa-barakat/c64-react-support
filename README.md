@@ -7,13 +7,13 @@ This is a React component for implementing a chat support feature on a website. 
 To use this component, you need to have React installed in your project. You can install the component using npm or yarn:
 
 ```
-npm i c64-react-support
+npm i c64-react-support --save
 ```
 
 or
 
 ```
-yarn add c64-react-support
+yarn add c64-react-support --save
 ```
 
 Once installed, you can import the component in your React code:
