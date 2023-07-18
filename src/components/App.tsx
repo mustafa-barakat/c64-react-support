@@ -534,8 +534,9 @@ const C64Chat = ({ helpColor, mainColor }: Props): React.JSX.Element => {
                   type='text'
                   value={currentMessage}
                   onChange={(e) => setCurrentMessage(e.target.value)}
-                  className='w-full rounded-full border border-gray-300 px-4 py-2'
+                  className=' rounded-full border border-gray-300 px-4 py-2'
                   placeholder='Type your message...'
+                  style={{ width: '100%' }}
                 />
                 <button
                   onClick={() => {
