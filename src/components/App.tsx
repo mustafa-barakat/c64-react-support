@@ -477,7 +477,12 @@ const C64Chat = ({ helpColor, mainColor }: Props): React.JSX.Element => {
             <div className='max-h-72 overflow-auto px-4 py-2'>
               <div className='mb-2 text-center text-sm text-gray-500'>June 19th, 2023</div>
 
-              <div className=' flex flex-col space-y-2'>
+              <div
+                className=' flex  space-y-2'
+                style={{
+                  flexDirection: 'column',
+                }}
+              >
                 {chats &&
                   chats.map(
                     (
