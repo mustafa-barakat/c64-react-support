@@ -20,12 +20,12 @@ const useChatStore = create((set) => ({
     const session = localStorage.getItem('session') || null
     const key = localStorage.getItem('sessionKey') || null
     if (!session || !key) {
-      const response = await fetch('http://localhost:3001/chat', {
+      const response = await fetch('https://support-api.codpark.com/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ apiKey: '92522612-81484-49112-1112510-2142100502107710' }),
+        body: JSON.stringify({ apiKey: '21301011815-613134-412133-91271-1146214400111277' }),
       })
       const data = await response.json()
       localStorage.setItem('session', data.session)
@@ -33,9 +33,9 @@ const useChatStore = create((set) => ({
       set({ chats: data.chats })
     } else {
       const response = await fetch(
-        `http://localhost:3001/message?sessionId=${session || ''}&sessionKey=${
+        `https://support-api.codpark.com/message?sessionId=${session || ''}&sessionKey=${
           key || ''
-        }&apiKey=92522612-81484-49112-1112510-2142100502107710
+        }&apiKey=21301011815-613134-412133-91271-1146214400111277
       `,
         {
           method: 'GET',
@@ -51,12 +51,17 @@ const useChatStore = create((set) => ({
   sendMessage: async (message: string) => {
     const sessionId = localStorage.getItem('session') || null
     const sessionKey = localStorage.getItem('sessionKey') || null
-    await fetch('http://localhost:3001/message', {
+    await fetch('https://support-api.codpark.com/message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ sessionId, sessionKey, message, apiKey: '92522612-81484-49112-1112510-2142100502107710' }),
+      body: JSON.stringify({
+        sessionId,
+        sessionKey,
+        message,
+        apiKey: '21301011815-613134-412133-91271-1146214400111277',
+      }),
     })
     // const data = await response.json()
     set((state: { chats: any }) => ({
