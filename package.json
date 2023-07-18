@@ -1,13 +1,13 @@
 {
   "name": "c64-react-support",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "NODE_ENV=publish microbundle-crl --no-compress --format cjs,es --ts",
-    "start": "microbundle-crl watch --no-compress --format cjs,es --ts",
+    "build": "NODE_ENV=publish microbundle-crl --compress --format cjs,es --ts",
+    "start": "microbundle-crl watch --compress --format cjs,es --ts",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run prettier && npm run lint",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
