@@ -4,8 +4,9 @@ type Props = {
   helpColor?: string
   mainColor?: string
   hoverColor?: string
+  API_KEY: string
 }
-const C64Chat = ({ helpColor, mainColor }: Props): React.JSX.Element => {
+const C64Chat = ({ helpColor, mainColor, API_KEY }: Props): React.JSX.Element => {
   const [currentMessage, setCurrentMessage] = React.useState('')
   const [showChat, setShowChat] = React.useState(false)
   const [messagesEndRef, setMessagesEndRef] = React.useState<HTMLDivElement | null>(null)
@@ -17,8 +18,8 @@ const C64Chat = ({ helpColor, mainColor }: Props): React.JSX.Element => {
   }
 
   useEffect(() => {
-    getChatHistory()
-  }, [getChatHistory])
+    getChatHistory(API_KEY)
+  }, [API_KEY, getChatHistory])
   useEffect(() => {
     scrollToBottom()
   }, [chats, scrollToBottom])
@@ -546,7 +547,7 @@ const C64Chat = ({ helpColor, mainColor }: Props): React.JSX.Element => {
                 <button
                   onClick={() => {
                     if (currentMessage) {
-                      sendMessage(currentMessage)
+                      sendMessage(API_KEY, currentMessage)
                       setCurrentMessage('')
                     }
                   }}

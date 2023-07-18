@@ -16,16 +16,23 @@ const useChatStore = create((set) => ({
   //     lastUpdate: new Date(),
   //   })),
 
-  getChatHistory: async () => {
+  getChatHistory: async (API_KEY: string) => {
     const session = localStorage.getItem('session') || null
     const key = localStorage.getItem('sessionKey') || null
-    if (!session || !key) {
+    if (
+      !session ||
+      !key ||
+      key === 'undefined' ||
+      session === 'undefined' ||
+      key === undefined ||
+      session === undefined
+    ) {
       const response = await fetch('https://support-api.codpark.com/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ apiKey: '21301011815-613134-412133-91271-1146214400111277' }),
+        body: JSON.stringify({ apiKey: API_KEY }),
       })
       const data = await response.json()
       localStorage.setItem('session', data.session)
@@ -35,7 +42,7 @@ const useChatStore = create((set) => ({
       const response = await fetch(
         `https://support-api.codpark.com/message?sessionId=${session || ''}&sessionKey=${
           key || ''
-        }&apiKey=21301011815-613134-412133-91271-1146214400111277
+        }&apiKey=API_KEY${API_KEY}
       `,
         {
           method: 'GET',
@@ -48,7 +55,7 @@ const useChatStore = create((set) => ({
       set({ chats: data })
     }
   },
-  sendMessage: async (message: string) => {
+  sendMessage: async (API_KEY: string, message: string) => {
     const sessionId = localStorage.getItem('session') || null
     const sessionKey = localStorage.getItem('sessionKey') || null
     await fetch('https://support-api.codpark.com/message', {
@@ -60,7 +67,7 @@ const useChatStore = create((set) => ({
         sessionId,
         sessionKey,
         message,
-        apiKey: '21301011815-613134-412133-91271-1146214400111277',
+        apiKey: API_KEY,
       }),
     })
     // const data = await response.json()
