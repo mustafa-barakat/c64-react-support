@@ -4,9 +4,10 @@ type Props = {
   helpColor?: string
   mainColor?: string
   hoverColor?: string
+  backgroundColor?: string
   API_KEY: string
 }
-const C64Chat = ({ helpColor, mainColor, API_KEY }: Props): React.JSX.Element => {
+const C64Chat = ({ helpColor, mainColor, API_KEY, backgroundColor }: Props): React.JSX.Element => {
   const [currentMessage, setCurrentMessage] = React.useState('')
   const [showChat, setShowChat] = React.useState(false)
   const [messagesEndRef, setMessagesEndRef] = React.useState<HTMLDivElement | null>(null)
@@ -254,7 +255,12 @@ const C64Chat = ({ helpColor, mainColor, API_KEY }: Props): React.JSX.Element =>
         </div>
       )}
       {showChat && (
-        <div className='max-h-120 chat-animation fixed bottom-2 right-2 z-50 max-w-xs'>
+        <div
+          className='max-h-120 chat-animation fixed bottom-2 right-2 z-50 max-w-xs '
+          style={{
+            backgroundColor: backgroundColor,
+          }}
+        >
           <div className='rounded-lg  shadow-lg'>
             {/* <!-- Header --> */}
             <div className='flex items-center justify-between border-b border-gray-200 px-4 py-2'>
