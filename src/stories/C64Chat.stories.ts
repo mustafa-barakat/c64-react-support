@@ -10,6 +10,8 @@ const meta = {
     helpColor: { control: 'color' },
     mainColor: { control: 'color' },
     hoverColor: { control: 'color' },
+    AccountAgent: { control: 'text' },
+    AccountName: { control: 'text' },
   },
 } satisfies Meta<typeof C64Chat>
 

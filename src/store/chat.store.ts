@@ -56,6 +56,8 @@ const useChatStore = create((set) => ({
     }
   },
   sendMessage: async (API_KEY: string, message: string) => {
+    ///get Current url from browser
+    const url = window.location.href
     const sessionId = localStorage.getItem('session') || null
     const sessionKey = localStorage.getItem('sessionKey') || null
     await fetch('https://support-api.codpark.com/message', {
@@ -67,12 +69,13 @@ const useChatStore = create((set) => ({
         sessionId,
         sessionKey,
         message,
+        url,
         apiKey: API_KEY,
       }),
     })
     // const data = await response.json()
     set((state: { chats: any }) => ({
-      chats: [...state.chats, { message, dir: 'outgoing' }],
+      chats: [...state.chats, { message, dir: 'outgoing', createdAt: new Date() }],
       lastUpdate: new Date(),
     }))
   },

@@ -13,7 +13,13 @@
     transform: translateX(0);
   }
 }
-.chat-animation {
+._chat-animation {
   opacity: 0;
   animation: fade-in-right ease 0.4s forwards;
+}
+.scrollableData::-webkit-scrollbar {
+  width: 0.45em;
+}
+.scrollableData::-webkit-scrollbar-thumb {
+  background-color: #FFFFFF;
 }

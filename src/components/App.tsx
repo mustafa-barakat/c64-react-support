@@ -6,8 +6,57 @@ type Props = {
   hoverColor?: string
   backgroundColor?: string
   API_KEY: string
+  AccountName?: string
+  AccountAgent?: string
 }
-const C64Chat = ({ helpColor, mainColor, API_KEY, backgroundColor }: Props): React.JSX.Element => {
+const FAQ = ({ FAQS }: any) => {
+  const [openIndex, setOpenIndex] = React.useState(-1)
+  return (
+    <div
+      className='flex space-y-2 '
+      style={{
+        flexDirection: 'column',
+      }}
+    >
+      <div
+        style={{
+          color: '#ffffff',
+        }}
+      >
+        We might be able to answer some of your questions
+      </div>
+      {FAQS.map((faq: any, index: any) => (
+        <div
+          key={index}
+          onClick={() => setOpenIndex(openIndex == index ? -1 : index)}
+          className=' flex-row space-y-2 text-white
+          rounded-lg shadow-lg px-4 py-2
+          '
+          style={{
+            cursor: 'pointer',
+            width: '100%',
+            fontWeight: 'bold',
+            backgroundColor: '#063970',
+          }}
+        >
+          {openIndex != index && '+'}
+          {openIndex == index && '-'} {faq.question}
+          {openIndex == index && (
+            <div
+              style={{
+                fontWeight: 'normal',
+              }}
+              className=' text-white max-w-xs flex-wrap _fNSKM  break-all'
+            >
+              {faq.answer}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+const C64Chat = ({ API_KEY, AccountAgent, AccountName }: Props): React.JSX.Element => {
   const [currentMessage, setCurrentMessage] = React.useState('')
   const [showChat, setShowChat] = React.useState(false)
   const [messagesEndRef, setMessagesEndRef] = React.useState<HTMLDivElement | null>(null)
@@ -17,7 +66,7 @@ const C64Chat = ({ helpColor, mainColor, API_KEY, backgroundColor }: Props): Rea
   const scrollToBottom = () => {
     messagesEndRef?.scrollIntoView({ behavior: 'smooth' })
   }
-
+  const [showFAQ, setShowFAQ] = React.useState(true)
   useEffect(() => {
     getChatHistory(API_KEY)
   }, [API_KEY, getChatHistory])
@@ -29,446 +78,82 @@ const C64Chat = ({ helpColor, mainColor, API_KEY, backgroundColor }: Props): Rea
     // alert(new Date(date).getTime() - new Date().getTime())
     if (new Date().getTime() - new Date(date).getTime() > 10 * 60 * 100) {
       //count in minutes
-      return new Date(date)
-        .toLocaleTimeString('en-US', {
-          hour: 'numeric',
-          hour12: false,
-          minute: 'numeric',
-        })
-        .split(' ')[0]
-    } else return Math.floor((new Date().getTime() - new Date(date).getTime()) / 60000) + 'minutes ago'
+      return (
+        new Date(date)
+          .toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            hour12: true,
+            minute: 'numeric',
+          })
+          .split(' ')[0] +
+        ' ' +
+        new Date(date)
+          .toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            hour12: true,
+            minute: 'numeric',
+          })
+          .split(' ')[1]
+      )
+    } else if (Math.floor((new Date().getTime() - new Date(date).getTime()) / 60000) == 0) return 'Just Now'
+    return Math.floor((new Date().getTime() - new Date(date).getTime()) / 60000) + ' minutes ago'
   }
   return (
     <div>
       {!showChat && (
-        <div className='chat-animation fixed bottom-4 right-4'>
-          <button
+        <div className='_fNSKM fixed bottom-4 right-4'>
+          <img
             onClick={() => setShowChat(!showChat)}
-            className={`max-w-sm rounded-full 
-            
-            px-4 py-2 font-bold text-white`}
-            style={{
-              backgroundColor: mainColor,
-            }}
-          >
-            <svg
-              width='50px'
-              height='50px'
-              viewBox='0 0 64 64'
-              version='1.1'
-              xmlns='http://www.w3.org/2000/svg'
-              fill='#000000'
-            >
-              <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
-              <g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g>
-              <g id='SVGRepo_iconCarrier'>
-                {' '}
-                <title>gen-lifebelt</title> <desc>Created with Sketch.</desc> <defs> </defs>{' '}
-                <g id='General' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
-                  {' '}
-                  <g id='SLICES-64px'> </g>{' '}
-                  <g id='ICONS' transform='translate(5.000000, 5.000000)'>
-                    {' '}
-                    <g id='gen-lifebelt' transform='translate(0.000000, 2.000000)'>
-                      {' '}
-                      <path
-                        d='M26.0001,40 C18.2681,40 12.0001,33.732 12.0001,26 C12.0001,18.267 18.2681,12 26.0001,12 C33.7321,12 40.0001,18.267 40.0001,26 C40.0001,33.732 33.7321,40 26.0001,40 M26.0001,0 C11.6411,0 0.0001,11.64 0.0001,26 C0.0001,40.359 11.6411,52 26.0001,52 C40.3591,52 52.0001,40.359 52.0001,26 C52.0001,11.64 40.3591,0 26.0001,0'
-                        id='Fill-464'
-                        fill={helpColor}
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M3.0025,13.8716 L13.6385,19.4216 L13.6485,19.4116 C14.9905,16.9016 17.0765,14.8566 19.6105,13.5526 L19.6385,13.5256 L13.8725,3.0026 C9.2455,5.4476 5.4475,9.2456 3.0025,13.8716'
-                        id='Fill-465'
-                        fill='#F1F0E2'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M38.128,3.0022 L32.361,13.5252 L32.39,13.5532 C34.923,14.8562 37.01,16.9012 38.352,19.4122 L38.361,19.4212 L48.998,13.8712 C46.553,9.2452 42.754,5.4472 38.128,3.0022'
-                        id='Fill-466'
-                        fill='#F1F0E2'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M13.648,32.5872 L13.639,32.5782 L3.002,38.1282 C5.447,42.7542 9.246,46.5532 13.872,48.9972 L19.639,38.4742 L19.611,38.4472 C17.077,37.1442 14.99,35.0982 13.648,32.5872'
-                        id='Fill-467'
-                        fill='#F1F0E2'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M48.9976,38.1284 L38.3616,32.5774 L38.3516,32.5864 C37.0106,35.0974 34.9236,37.1434 32.3896,38.4474 L32.3616,38.4744 L38.1276,48.9974 C42.7546,46.5524 46.5526,42.7544 48.9976,38.1284'
-                        id='Fill-468'
-                        fill='#F1F0E2'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M2.9971,13.8689 C2.3621,12.7229 2.0001,11.4029 2.0001,9.9999 C2.0001,5.5819 5.5821,1.9999 10.0001,1.9999 C11.4031,1.9999 12.7231,2.3619 13.8691,2.9969'
-                        id='Stroke-469'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M49.003,13.8689 C49.638,12.7229 50,11.4029 50,9.9999 C50,5.5819 46.418,1.9999 42,1.9999 C40.597,1.9999 39.277,2.3619 38.131,2.9969'
-                        id='Stroke-470'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M2.9971,38.1311 C2.3621,39.2771 2.0001,40.5961 2.0001,42.0001 C2.0001,46.4171 5.5821,50.0001 10.0001,50.0001 C11.4031,50.0001 12.7231,49.6381 13.8691,49.0031'
-                        id='Stroke-471'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M49.003,38.1311 C49.638,39.2771 50,40.5961 50,42.0001 C50,46.4171 46.418,50.0001 42,50.0001 C40.597,50.0001 39.277,49.6381 38.131,49.0031'
-                        id='Stroke-472'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M52.0001,26 C52.0001,11.64 40.3591,0 26.0001,0 C11.6411,0 0.0001,11.64 0.0001,26 C0.0001,40.359 11.6411,52 26.0001,52 C40.3591,52 52.0001,40.359 52.0001,26 Z'
-                        id='Stroke-473'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M40.0001,26 C40.0001,33.732 33.7321,40 26.0001,40 C18.2681,40 12.0001,33.732 12.0001,26 C12.0001,18.267 18.2681,12 26.0001,12 C33.7321,12 40.0001,18.267 40.0001,26 Z'
-                        id='Stroke-474'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M13.8692,2.9968 L19.6392,13.5248'
-                        id='Stroke-475'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M13.6387,19.4216 L2.9967,13.8686'
-                        id='Stroke-476'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M38.1309,2.9968 L32.3609,13.5248'
-                        id='Stroke-477'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M38.3614,19.4216 L49.0034,13.8686'
-                        id='Stroke-478'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M13.8692,49.0027 L19.6392,38.4747'
-                        id='Stroke-479'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M13.6387,32.5779 L2.9967,38.1309'
-                        id='Stroke-480'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M38.1309,49.0027 L32.3609,38.4747'
-                        id='Stroke-481'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                      <path
-                        d='M38.3614,32.5779 L49.0034,38.1309'
-                        id='Stroke-482'
-                        stroke='#414547'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                      >
-                        {' '}
-                      </path>{' '}
-                    </g>{' '}
-                  </g>{' '}
-                </g>{' '}
-              </g>
-            </svg>
-          </button>
+            src='https://supportify.codpark.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fc64.e24f929e.png&w=48&q=75'
+            alt='chat'
+            className='max-w-sm
+            px-4 py-2 '
+          />
         </div>
       )}
       {showChat && (
         <div
-          className='max-h-120 chat-animation fixed bottom-2 right-2 z-50 max-w-xs '
+          className='max-h-120 _fNSKM fixed bottom-2 right-2 z-500 max-w-xs
+            rounded-lg shadow-lg
+            '
           style={{
-            backgroundColor: backgroundColor,
+            backgroundColor: '#000000',
+            width: '20rem',
           }}
         >
           <div className='rounded-lg  shadow-lg'>
             {/* <!-- Header --> */}
-            <div className='flex items-center justify-between border-b border-gray-200 px-4 py-2'>
+            <div className='flex items-center justify-between px-4 py-2'>
               <div>
-                <svg
-                  width='24px'
-                  height='24px'
-                  viewBox='0 0 64 64'
-                  version='1.1'
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='#000000'
-                >
-                  <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
-                  <g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g>
-                  <g id='SVGRepo_iconCarrier'>
-                    {' '}
-                    <title>gen-lifebelt</title> <desc>Created with Sketch.</desc> <defs> </defs>{' '}
-                    <g id='General' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
-                      {' '}
-                      <g id='SLICES-64px'> </g>{' '}
-                      <g id='ICONS' transform='translate(5.000000, 5.000000)'>
-                        {' '}
-                        <g id='gen-lifebelt' transform='translate(0.000000, 2.000000)'>
-                          {' '}
-                          <path
-                            d='M26.0001,40 C18.2681,40 12.0001,33.732 12.0001,26 C12.0001,18.267 18.2681,12 26.0001,12 C33.7321,12 40.0001,18.267 40.0001,26 C40.0001,33.732 33.7321,40 26.0001,40 M26.0001,0 C11.6411,0 0.0001,11.64 0.0001,26 C0.0001,40.359 11.6411,52 26.0001,52 C40.3591,52 52.0001,40.359 52.0001,26 C52.0001,11.64 40.3591,0 26.0001,0'
-                            id='Fill-464'
-                            fill={helpColor}
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M3.0025,13.8716 L13.6385,19.4216 L13.6485,19.4116 C14.9905,16.9016 17.0765,14.8566 19.6105,13.5526 L19.6385,13.5256 L13.8725,3.0026 C9.2455,5.4476 5.4475,9.2456 3.0025,13.8716'
-                            id='Fill-465'
-                            fill='#F1F0E2'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M38.128,3.0022 L32.361,13.5252 L32.39,13.5532 C34.923,14.8562 37.01,16.9012 38.352,19.4122 L38.361,19.4212 L48.998,13.8712 C46.553,9.2452 42.754,5.4472 38.128,3.0022'
-                            id='Fill-466'
-                            fill='#F1F0E2'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M13.648,32.5872 L13.639,32.5782 L3.002,38.1282 C5.447,42.7542 9.246,46.5532 13.872,48.9972 L19.639,38.4742 L19.611,38.4472 C17.077,37.1442 14.99,35.0982 13.648,32.5872'
-                            id='Fill-467'
-                            fill='#F1F0E2'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M48.9976,38.1284 L38.3616,32.5774 L38.3516,32.5864 C37.0106,35.0974 34.9236,37.1434 32.3896,38.4474 L32.3616,38.4744 L38.1276,48.9974 C42.7546,46.5524 46.5526,42.7544 48.9976,38.1284'
-                            id='Fill-468'
-                            fill='#F1F0E2'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M2.9971,13.8689 C2.3621,12.7229 2.0001,11.4029 2.0001,9.9999 C2.0001,5.5819 5.5821,1.9999 10.0001,1.9999 C11.4031,1.9999 12.7231,2.3619 13.8691,2.9969'
-                            id='Stroke-469'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M49.003,13.8689 C49.638,12.7229 50,11.4029 50,9.9999 C50,5.5819 46.418,1.9999 42,1.9999 C40.597,1.9999 39.277,2.3619 38.131,2.9969'
-                            id='Stroke-470'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M2.9971,38.1311 C2.3621,39.2771 2.0001,40.5961 2.0001,42.0001 C2.0001,46.4171 5.5821,50.0001 10.0001,50.0001 C11.4031,50.0001 12.7231,49.6381 13.8691,49.0031'
-                            id='Stroke-471'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M49.003,38.1311 C49.638,39.2771 50,40.5961 50,42.0001 C50,46.4171 46.418,50.0001 42,50.0001 C40.597,50.0001 39.277,49.6381 38.131,49.0031'
-                            id='Stroke-472'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M52.0001,26 C52.0001,11.64 40.3591,0 26.0001,0 C11.6411,0 0.0001,11.64 0.0001,26 C0.0001,40.359 11.6411,52 26.0001,52 C40.3591,52 52.0001,40.359 52.0001,26 Z'
-                            id='Stroke-473'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M40.0001,26 C40.0001,33.732 33.7321,40 26.0001,40 C18.2681,40 12.0001,33.732 12.0001,26 C12.0001,18.267 18.2681,12 26.0001,12 C33.7321,12 40.0001,18.267 40.0001,26 Z'
-                            id='Stroke-474'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M13.8692,2.9968 L19.6392,13.5248'
-                            id='Stroke-475'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M13.6387,19.4216 L2.9967,13.8686'
-                            id='Stroke-476'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M38.1309,2.9968 L32.3609,13.5248'
-                            id='Stroke-477'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M38.3614,19.4216 L49.0034,13.8686'
-                            id='Stroke-478'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M13.8692,49.0027 L19.6392,38.4747'
-                            id='Stroke-479'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M13.6387,32.5779 L2.9967,38.1309'
-                            id='Stroke-480'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M38.1309,49.0027 L32.3609,38.4747'
-                            id='Stroke-481'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                          <path
-                            d='M38.3614,32.5779 L49.0034,38.1309'
-                            id='Stroke-482'
-                            stroke='#414547'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          >
-                            {' '}
-                          </path>{' '}
-                        </g>{' '}
-                      </g>{' '}
-                    </g>{' '}
-                  </g>
-                </svg>
+                <img
+                  onClick={() => setShowChat(!showChat)}
+                  src='https://supportify.codpark.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fc64.e24f929e.png&w=48&q=75'
+                  alt='chat'
+                  className='px-1 py-1 '
+                  style={{
+                    height: '50px',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                />
               </div>
               <div>
-                <h3 className='text-md font-medium'>VQ Support</h3>
-                <p className='text-sm font-light'>Abdelrahman</p>
+                <h3
+                  className='text-md font-medium'
+                  style={{
+                    color: '#ffffff',
+                  }}
+                >
+                  {AccountName ? AccountName : 'Support'}
+                </h3>
+                <p
+                  className='text-sm font-light'
+                  style={{
+                    color: '#ffffff',
+                  }}
+                >
+                  {AccountAgent ? AccountAgent : 'Agent'}
+                </p>
               </div>
               <button onClick={() => setShowChat(!showChat)} className='text-gray-400 hover:text-gray-500'>
                 <svg className='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
@@ -481,88 +166,159 @@ const C64Chat = ({ helpColor, mainColor, API_KEY, backgroundColor }: Props): Rea
               </button>
             </div>
             {/* <!-- Messages --> */}
-            <div className='max-h-72 overflow-auto px-4 py-2'>
-              <div className='mb-2 text-center text-sm text-gray-500'>June 19th, 2023</div>
+            {!showFAQ && (
+              <div>
+                <div className='max-h-72 overflow-auto  px-4 py-2 _3t-LV'>
+                  <div className='mb-2 text-center text-sm text-gray-500'>June 19th, 2023</div>
 
-              <div
-                className=' flex  space-y-2'
-                style={{
-                  flexDirection: 'column',
-                }}
-              >
-                {chats &&
-                  chats.map(
-                    (
-                      chat: {
-                        createdAt: string
-                        message:
-                          | string
-                          | number
-                          | boolean
-                          | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-                          | Iterable<React.ReactNode>
-                          | React.ReactPortal
-                          | null
-                          | undefined
-                        dir: string
-                      },
-                      index: React.Key | null | undefined,
-                    ) => (
-                      <div
-                        key={index}
-                        className={` flex ${chat.dir === 'incoming' ? 'items-start' : 'items-end justify-end'}`}
-                      >
-                        <div className={`rounded-lg ${chat.dir === 'incoming' ? 'bg-yellow-500' : 'bg-blue-500'} p-2`}>
-                          <p className={`text-sm ${chat.dir === 'incoming' ? 'text-black' : 'text-white'} `}>
-                            {chat.message}
-                          </p>
-                          <p
-                            className={`text-xs font-extralight ${
-                              chat.dir === 'incoming' ? 'text-white' : 'text-white'
-                            } `}
+                  <div
+                    className=' flex  space-y-2'
+                    style={{
+                      flexDirection: 'column',
+                    }}
+                  >
+                    {chats &&
+                      chats.map(
+                        (
+                          chat: {
+                            createdAt: string
+                            message:
+                              | string
+                              | number
+                              | boolean
+                              | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+                              | Iterable<React.ReactNode>
+                              | React.ReactPortal
+                              | null
+                              | undefined
+                            dir: string
+                          },
+                          index: React.Key | null | undefined,
+                        ) => (
+                          <div
+                            key={index}
+                            className={` flex ${chat.dir === 'incoming' ? 'items-start' : 'items-end justify-end'}`}
                           >
-                            {
-                              //if less than 10 minutes
-                              getTime(chat.createdAt)
-                            }
-                          </p>
-                        </div>
-                      </div>
-                    ),
-                  )}
-                <div className='bg-red-500'></div>
-                <div
-                  style={{ float: 'left', clear: 'both' }}
-                  ref={(el) => {
-                    setMessagesEndRef(el)
-                  }}
-                ></div>
+                            <div
+                              className={`rounded-lg ${chat.dir === 'incoming' ? 'bg-yellow-500' : 'bg-blue-500'} p-2`}
+                            >
+                              <p className={`text-sm ${chat.dir === 'incoming' ? 'text-black' : 'text-white'} `}>
+                                {chat.message}
+                              </p>
+                              <p
+                                className={`text-xs font-extralight ${
+                                  chat.dir === 'incoming' ? 'text-white' : 'text-white'
+                                } `}
+                              >
+                                {
+                                  //if less than 10 minutes
+                                  getTime(chat.createdAt)
+                                }
+                              </p>
+                            </div>
+                          </div>
+                        ),
+                      )}
+                    <div className='bg-red-500'></div>
+                    <div
+                      style={{ float: 'left', clear: 'both' }}
+                      ref={(el) => {
+                        setMessagesEndRef(el)
+                      }}
+                    ></div>
+                  </div>
+                </div>
+                <div className='px-4 py-2'>
+                  <div className='flex items-center'>
+                    <input
+                      type='text'
+                      value={currentMessage}
+                      onKeyUp={(e) => {
+                        if (e.key === 'Enter') {
+                          if (currentMessage) {
+                            sendMessage(API_KEY, currentMessage)
+                            setCurrentMessage('')
+                          }
+                        }
+                      }}
+                      onSubmit={(e) => {
+                        e.preventDefault()
+                        if (currentMessage) {
+                          sendMessage(API_KEY, currentMessage)
+                          setCurrentMessage('')
+                        }
+                      }}
+                      onChange={(e) => setCurrentMessage(e.target.value)}
+                      className=' 
+                  rounded-lg
+                  px-4 py-2'
+                      placeholder='Type your message...'
+                      style={{ width: '100%', backgroundColor: 'black', color: 'white' }}
+                    />
+                    <button
+                      onClick={() => {
+                        if (currentMessage) {
+                          sendMessage(API_KEY, currentMessage)
+                          setCurrentMessage('')
+                        }
+                      }}
+                      className='ml-2 rounded-lg px-4 py-2 font-medium '
+                      style={{
+                        color: '#000000',
+                        backgroundColor: '#ffffff',
+                      }}
+                    >
+                      Send
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-            {/* <!-- Input --> */}
-            <div className='border-t border-gray-200 px-4 py-2'>
-              <div className='flex items-center'>
-                <input
-                  type='text'
-                  value={currentMessage}
-                  onChange={(e) => setCurrentMessage(e.target.value)}
-                  className=' rounded-full border border-gray-300 px-4 py-2'
-                  placeholder='Type your message...'
-                  style={{ width: '100%' }}
+            )}
+            {showFAQ && (
+              <div className='min-h-72   px-4 py-2 _3t-LV' style={{}}>
+                <FAQ
+                  FAQS={[
+                    {
+                      question: 'What is the C64?',
+                      answer:
+                        'dasdddddd ddddddddddddddddddddd addasdddddddddd dddddddddddddddddaddasdddddddd ddddddddd ddddddddddaddasd dddddddddddddddddd ddddddddad',
+                    },
+                    {
+                      question: 'What is the C64?',
+                      answer:
+                        'dasdddddd ddddddddddddddddddddd addasdddddddddd dddddddddddddddddaddasdddddddd ddddddddd ddddddddddaddasddd dddddddddddddddd ddddddddad',
+                    },
+                    {
+                      question: 'What is the C64?',
+                      answer:
+                        'dasdddddd ddddddddddddddddddddd addasdddddddddd dddddddddddddddddaddasdddddddd ddddddddd ddddddddddaddasdddd ddddddddddddddd ddddddddad',
+                    },
+                  ]}
                 />
-                <button
-                  onClick={() => {
-                    if (currentMessage) {
-                      sendMessage(API_KEY, currentMessage)
-                      setCurrentMessage('')
-                    }
+                <div
+                  onClick={() => setShowFAQ(false)}
+                  // onClick={() => setOpenIndex(openIndex == index ? -1 : index)}
+                  className=' flex-row space-y-2 text-white
+          rounded-lg shadow-lg px-4 py-2  
+          '
+                  style={{
+                    cursor: 'pointer',
+                    width: '100%',
+                    fontWeight: 'bold',
+                    marginTop: '1rem',
+                    backgroundColor: '#154c79',
                   }}
-                  className='ml-2 rounded-full bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600'
                 >
-                  Send
-                </button>
+                  Continue with an agent
+                  <div
+                    style={{
+                      fontWeight: 'normal',
+                    }}
+                    className=' text-white max-w-xs flex-wrap _fNSKM  break-all'
+                  ></div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}
